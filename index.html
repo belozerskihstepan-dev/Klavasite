@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Клаva — Студия красоты | Белгород</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF9F7;
+      --surface: #FFFFFF;
+      --text: #18181B;
+      --muted: #71717A;
+      --border: #E4E4E7;
+      --accent: #18181B;
+      --accent-hover: #27272A;
+      --warm: #9A7B5C;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(250, 249, 247, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--warm);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      max-width: 640px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-item span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .meta-item strong {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Sections */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      margin-bottom: 32px;
+    }
+
+    .section-head h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .section-head p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Services */
+    .services-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .service-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .service-row:last-child {
+      border-bottom: none;
+    }
+
+    .service-info h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .service-info span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .service-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    /* Booking */
+    .booking-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .booking-note {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .booking-note div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 11px 12px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--text);
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .time-slot {
+      padding: 9px 0;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .time-slot:hover {
+      border-color: var(--text);
+    }
+
+    .time-slot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFFFFF;
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 8px;
+      padding: 13px;
+    }
+
+    .success-box {
+      display: none;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .success-box.visible {
+      display: block;
+    }
+
+    .success-box h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .success-box p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .success-details {
+      font-size: 14px;
+      padding: 12px 14px;
+      background: var(--bg);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* Contacts */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .contact-card span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-card a, .contact-card p {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .messengers {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .nav a.hide-mobile {
+        display: none;
+      }
+      .hero {
+        padding: 48px 0 40px;
+      }
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .service-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .service-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">Клаva</a>
+      <nav class="nav">
+        <a href="#services" class="hide-mobile">Услуги и цены</a>
+        <a href="#contacts" class="hide-mobile">Контакты</a>
+        <a href="#booking" class="btn btn-primary btn-sm">Записаться</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+          Студия красоты · Рейтинг 5.0 в 2ГИС
+        </div>
+        <h1>Онлайн-запись в студию красоты «Клаva»</h1>
+        <p>Выберите услугу и удобное время без звонков и ожидания ответа в мессенджерах. Работаем ежедневно по предварительной записи.</p>
+        <div class="hero-actions">
+          <a href="#booking" class="btn btn-primary">Записаться онлайн</a>
+          <a href="#services" class="btn btn-outline">Смотреть прайс</a>
+        </div>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span>Адрес</span>
+            <strong>Белгород, Юбилейная ул., 1 (2 этаж)</strong>
+          </div>
+          <div class="meta-item">
+            <span>Режим работы</span>
+            <strong>Ежедневно 9:00–19:00</strong>
+          </div>
+          <div class="meta-item">
+            <span>Телефон</span>
+            <strong>+7 (910) 227-23-16</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Услуги и цены</h2>
+          <p>Нажмите «Выбрать», чтобы сразу подставить услугу в форму записи</p>
+        </div>
+
+        <div class="services-list">
+          <div class="service-row">
+            <div class="service-info">
+              <h3>Женская стрижка</h3>
+              <span>Мытьё головы, стрижка, сушка по форме · 60 мин</span>
+            </div>
+            <div class="service-right">
+              <span class="price">1 200 ₽</span>
+              <button type="button" class="btn btn-outline btn-sm select-service" data-service="Женская стрижка — 1 200 ₽">Выбрать</button>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="service-info">
+              <h3>Окрашивание в один тон</h3>
+              <span>Подбор оттенка, окрашивание, уход · 120 мин</span>
+            </div>
+            <div class="service-right">
+              <span class="price">от 3 200 ₽</span>
+              <button type="button" class="btn btn-outline btn-sm select-service" data-service="Окрашивание в один тон — от 3 200 ₽">Выбрать</button>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="service-info">
+              <h3>Сложное окрашивание</h3>
+              <span>AirTouch, балаяж, мелирование · 180 мин</span>
+            </div>
+            <div class="service-right">
+              <span class="price">от 5 500 ₽</span>
+              <button type="button" class="btn btn-outline btn-sm select-service" data-service="Сложное окрашивание — от 5 500 ₽">Выбрать</button>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="service-info">
+              <h3>Укладка</h3>
+              <span>Повседневная или вечерняя укладка · 45 мин</span>
+            </div>
+            <div class="service-right">
+              <span class="price">1 500 ₽</span>
+              <button type="button" class="btn btn-outline btn-sm select-service" data-service="Укладка — 1 500 ₽">Выбрать</button>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div class="service-info">
+              <h3>Уход и восстановление волос</h3>
+              <span>Глубокое питание и термозащита · 45 мин</span>
+            </div>
+            <div class="service-right">
+              <span class="price">1 800 ₽</span>
+              <button type="button" class="btn btn-outline btn-sm select-service" data-service="Уход и восстановление волос — 1 800 ₽">Выбрать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+      <div class="container">
+        <div class="booking-grid">
+          <div>
+            <div class="section-head" style="margin-bottom: 16px;">
+              <h2>Онлайн-запись</h2>
+              <p>Заявка сразу приходит мастеру в Telegram. Подтвердим время в течение 15 минут.</p>
+            </div>
+            <div class="booking-note">
+              <div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Принимаем ежедневно с 9:00 до 19:00
+              </div>
+              <div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Управа №13 «Сумская», 2 этаж
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form id="bookingForm" class="form-card">
+              <div class="form-group">
+                <label for="service">Услуга</label>
+                <select id="service" name="service" required>
+                  <option value="Женская стрижка — 1 200 ₽">Женская стрижка — 1 200 ₽</option>
+                  <option value="Окрашивание в один тон — от 3 200 ₽">Окрашивание в один тон — от 3 200 ₽</option>
+                  <option value="Сложное окрашивание — от 5 500 ₽">Сложное окрашивание — от 5 500 ₽</option>
+                  <option value="Укладка — 1 500 ₽">Укладка — 1 500 ₽</option>
+                  <option value="Уход и восстановление волос — 1 800 ₽">Уход и восстановление волос — 1 800 ₽</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Дата</label>
+                <input type="date" id="date" name="date" required>
+              </div>
+
+              <div class="form-group">
+                <label>Время</label>
+                <div class="time-slots" id="timeSlots">
+                  <button type="button" class="time-slot active" data-time="09:00">09:00</button>
+                  <button type="button" class="time-slot" data-time="10:30">10:30</button>
+                  <button type="button" class="time-slot" data-time="12:00">12:00</button>
+                  <button type="button" class="time-slot" data-time="13:30">13:30</button>
+                  <button type="button" class="time-slot" data-time="15:00">15:00</button>
+                  <button type="button" class="time-slot" data-time="16:30">16:30</button>
+                  <button type="button" class="time-slot" data-time="18:00">18:00</button>
+                </div>
+                <input type="hidden" id="time" name="time" value="09:00">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Ваше имя</label>
+                  <input type="text" id="name" name="name" placeholder="Анна" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Телефон</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+              </div>
+
+              <button type="submit" id="submitBtn" class="btn btn-primary form-submit">Отправить заявку</button>
+            </form>
+
+            <div id="successBox" class="success-box">
+              <h3>Заявка отправлена</h3>
+              <p>Мастер получил вашу запись и свяжется для подтверждения.</p>
+              <div id="successDetails" class="success-details"></div>
+              <button type="button" id="resetBtn" class="btn btn-outline btn-sm">Записаться ещё раз</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="container">
+        <div class="section-head">
+          <h2>Контакты</h2>
+          <p>Остановка «Памятник» — 1 минута пешком</p>
+        </div>
+
+        <div class="contacts-grid">
+          <div class="contact-card">
+            <span>Адрес</span>
+            <p>Белгород, Юбилейная улица, 1<br>Управа №13 «Сумская», 2 этаж</p>
+          </div>
+          <div class="contact-card">
+            <span>Режим работы</span>
+            <p>Ежедневно 9:00–19:00<br>По предварительной записи</p>
+          </div>
+          <div class="contact-card">
+            <span>Связь</span>
+            <a href="tel:+79102272316">+7 (910) 227-23-16</a>
+            <div class="messengers">
+              <a href="https://t.me/+79102272316" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Telegram</a>
+              <a href="https://wa.me/79102272316" target="_blank" rel="noopener" class="btn btn-outline btn-sm">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Студия красоты «Клаva» · Белгород</span>
+      <span>Юбилейная ул., 1</span>
+    </div>
+  </footer>
+
+  <script>
+    // Вставьте токен бота от @BotFather и ID чата владельца для реальной отправки заявок в Telegram.
+    // Если оставить пустыми — форма работает в демо-режиме.
+    const TG_BOT_TOKEN = '';
+    const TG_CHAT_ID = '';
+
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+
+    // Выбор услуги из прайса
+    document.querySelectorAll('.select-service').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.getElementById('service').value = btn.dataset.service;
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Выбор времени
+    const timeInput = document.getElementById('time');
+    document.querySelectorAll('.time-slot').forEach((slot) => {
+      slot.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach((s) => s.classList.remove('active'));
+        slot.classList.add('active');
+        timeInput.value = slot.dataset.time;
+      });
+    });
+
+    // Отправка формы
+    const form = document.getElementById('bookingForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successBox = document.getElementById('successBox');
+    const successDetails = document.getElementById('successDetails');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправка...';
+
+      const data = {
+        service: document.getElementById('service').value,
+        date: dateInput.value,
+        time: timeInput.value,
+        name: document.getElementById('name').value.trim(),
+        phone: document.getElementById('phone').value.trim()
+      };
+
+      const message = [
+        'Новая запись — Клаva',
+        `Услуга: ${data.service}`,
+        `Дата: ${data.date}`,
+        `Время: ${data.time}`,
+        `Имя: ${data.name}`,
+        `Телефон: ${data.phone}`
+      ].join('\n');
+
+      try {
+        if (TG_BOT_TOKEN && TG_CHAT_ID) {
+          const res = await fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: TG_CHAT_ID, text: message })
+          });
+          if (!res.ok) throw new Error('Telegram API error');
+        } else {
+          await new Promise((r) => setTimeout(r, 300));
+        }
+
+        successDetails.innerHTML =
+          `<strong>${data.service}</strong><br>` +
+          `Дата и время: ${data.date}, ${data.time}<br>` +
+          `Клиент: ${data.name}, ${data.phone}`;
+
+        form.style.display = 'none';
+        successBox.classList.add('visible');
+      } catch (err) {
+        alert('Не удалось отправить заявку. Позвоните по номеру +7 (910) 227-23-16.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Отправить заявку';
+      }
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      form.reset();
+      dateInput.value = today;
+      form.style.display = 'block';
+      successBox.classList.remove('visible');
+    });
+  </script>
+</body>
+</html>
